@@ -1,3 +1,4 @@
+using DataForSeo.BusinessLogic.InjectionModules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +20,8 @@ namespace DataForSeoSERPRegilar
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllersWithViews();
+      services.ConfigureDataAccess(Configuration);
+      services.ConfigureBusinessLogic(Configuration);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
