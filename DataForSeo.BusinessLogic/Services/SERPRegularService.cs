@@ -3,6 +3,8 @@ using DataForSeo.BusinessLogic.Interfaces;
 using DataForSeo.DataAccess.Entities;
 using DataForSeo.DataAccess.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DataForSeo.BusinessLogic.Services
@@ -16,10 +18,21 @@ namespace DataForSeo.BusinessLogic.Services
       _repository = repository;
     }
 
-    public async Task<int> Create(SERPRegularDTO model)
+    public async Task<int> CreateAsync(SERPRegularDTO model)
     {
       return await _repository.CreateAsync(
         new SERPRegularEntity()
+        {
+          Keyword = model.Keyword,
+          SearchEngine = model.SearchEngine,
+          Website = model.Website,
+          Rank_group = model.Rank_group
+        });
+    }
+    public async Task<IEnumerable<SERPRegularDTO>> GetAllAsync()
+    {
+      return (await _repository.GetAllAsync()).Select(
+        model => new SERPRegularDTO() 
         {
           Keyword = model.Keyword,
           SearchEngine = model.SearchEngine,
@@ -33,6 +46,7 @@ namespace DataForSeo.BusinessLogic.Services
       _repository.Dispose();
       GC.SuppressFinalize(this);
     }
+
 
     ~SERPRegularService()
     {

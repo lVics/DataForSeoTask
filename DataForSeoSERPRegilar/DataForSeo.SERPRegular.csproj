@@ -8,8 +8,4 @@
     <ProjectReference Include="..\DataForSeo.BusinessLogic\DataForSeo.BusinessLogic.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

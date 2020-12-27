@@ -9,7 +9,7 @@ namespace DataForSeo.BusinessLogic.InjectionModules
   {
     public static void ConfigureDataAccess(this IServiceCollection services, IConfiguration configuration)
     {
-      string connectionString = configuration.GetConnectionString("ConnectionString");
+      string connectionString = configuration.GetConnectionString("MSSQL");
 
       services.AddScoped<ISERPRegularRepository, SERPRegularRepository>(provider => new SERPRegularRepository(connectionString));
     }

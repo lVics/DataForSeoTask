@@ -1,33 +1,71 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
 
 @using DataForSeo.SERPRegular.ViewModels;
 
 @model SERPRegularViewModel
 
-  <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<div class="text-center">
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach (var regular in Model.SERPRegulars)
+  <h1 class="display-4">Seo Data</h1>
+
+  <form>
+    <div class="form-group">
+      <label for="searchEngine">Choose Search Engine</label>
+      <select id="selectSearchEngine" class="form-control">
+        @foreach (var item in Model.SearchEngines)
         {
-          <tr>
-            <th scope="row">@regular.Keyword</th>
-            <td>@regular.SearchEngine</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
+          <option value="@item">@item</option>
         }
-      </tbody>
-    </table>
-  </div>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="searchEngine">Choose Location</label>
+      <select id="selectSearchEngine" class="form-control">
+        @foreach (var item in Model.Locations)
+        {
+          <option value="@item.location_code">@item.location_name</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Website</label>
+      <input type="email" class="form-control" id="website" 
+             aria-describedby="website name" placeholder="Enter a website name">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Keywords</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <h1 class="display-4">Search Result</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Website</th>
+        <th scope="col">Search Engine</th>
+        <th scope="col">Keyword</th>
+        <th scope="col">Rank group</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var regular in Model.SERPRegulars)
+      {
+        <tr>
+          <td scope="row">@regular.Website</td>
+          <td>@regular.SearchEngine</td>
+          <th>@regular.Keyword</th>
+          <td>@regular.Rank_group</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
