@@ -23,7 +23,7 @@ namespace DataForSeo.Shared.APIModels
     public float cost { get; set; }
     public int result_count { get; set; }
     public List<string> path { get; set; }
-    public List<LocationDataItem> data { get; set; }
+    public LocationDataItem data { get; set; }
     public List<LocationResultItem> result { get; set; }
   }
 

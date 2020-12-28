@@ -15,7 +15,7 @@ namespace DataForSeo.Shared.Managers
   {
     public static async Task<IEnumerable<LocationResultItem>> serp_locations()
     {
-      var httpClient = get_authorize_client("https://api.dataforseo.com/");
+      var httpClient = get_authorize_client(baseUrl: "https://api.dataforseo.com/");
 
       var response = await httpClient.GetAsync("/v3/serp/google/locations");
       var result = JsonConvert.DeserializeObject<LocationsModel>(await response.Content.ReadAsStringAsync());
@@ -27,6 +27,31 @@ namespace DataForSeo.Shared.Managers
         throw new Exception($"code: {result.status_code}  message: {result.status_message}");
     }
 
+    //public static async Task<int> serp_live_regular(LiveRegularModel model)
+    //{
+    //  var httpClient = get_authorize_client(baseUrl: "https://api.dataforseo.com/");
+
+    //  var postData = new List<object>();
+    //  postData.Add(new
+    //  {
+    //    language_code = "en",
+    //    location_code = 2840,
+    //    keyword = "albert einstein"
+    //  });
+    //  // POST /v3/serp/google/organic/live/regular
+    //  // in addition to 'google' and 'organic' you can also set other search engine and type parameters
+    //  // the full list of possible parameters is available in documentation
+    //  var taskPostResponse = await httpClient.PostAsync("/v3/serp/google/organic/live/regular", new StringContent(JsonConvert.SerializeObject(postData)));
+    //  var result = JsonConvert.DeserializeObject<dynamic>(await taskPostResponse.Content.ReadAsStringAsync());
+    //  // you can find the full list of the response codes here https://docs.dataforseo.com/v3/appendix/errors
+    //  if (result.status_code == 20000)
+    //  {
+    //    return result.
+    //    Console.WriteLine(result);
+    //  }
+    //  else
+    //    throw new Exception($"code: {result.status_code}  message: {result.status_message}");
+    //}
 
     private static HttpClient get_authorize_client(string baseUrl)
     {

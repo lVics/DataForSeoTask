@@ -23,34 +23,26 @@ namespace DataForSeoSERPRegilar.Controllers
     {
       var model = new SERPRegularViewModel();
       model.SERPRegulars = await _SERPRegularService.GetAllAsync();
+      //Enum.GetValues(typeof(Foos)).Cast<Foos>()
       model.SearchEngines = new List<SearchEngine>() { SearchEngine.Google, SearchEngine.Bing };
-      //model.Locations = (await Demos.serp_locations()).Select(location =>
-      //{
-      //  return new LocationViewItem()
-      //  {
-      //    location_code = location.location_code,
-      //    location_name = location.location_name
-      //  };
-      //});
-      model.Locations = new List<LocationViewItem>() 
+      model.Locations = (await Demos.serp_locations()).Select(location =>
       {
-        new LocationViewItem()
+        return new LocationViewItem()
         {
-          location_code = 1,
-          location_name = "Location1"
-        },
-        new LocationViewItem()
-        {
-          location_code = 2,
-          location_name = "Location2"
-        },
-        new LocationViewItem()
-        {
-          location_code = 3,
-          location_name = "Location3"
-        }
-    };
+          location_code = location.location_code,
+          location_name = location.location_name
+        };
+      });
       return View(model);
+    }
+
+    [HttpPost]
+    [Route("Search")]
+    public async Task<IActionResult> Search(SERPRegularDTO model)
+    {
+      //model.Rank_group = await Demos.serp_live_regular(model);
+      await _SERPRegularService.CreateAsync(model);
+      return RedirectToAction("Index");
     }
   }
 }

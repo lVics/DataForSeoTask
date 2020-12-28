@@ -10,39 +10,57 @@
 
   <h1 class="display-4">Seo Data</h1>
 
-  <form>
+  <form id="serpSearchRank" method="post" action="Search">
     <div class="form-group">
       <label for="searchEngine">Choose Search Engine</label>
-      <select id="selectSearchEngine" class="form-control">
+      <select id="selectSearchEngine" class="form-control required"
+              name="SearchEngine">
+        <option selected disabled value="default"></option>
         @foreach (var item in Model.SearchEngines)
         {
           <option value="@item">@item</option>
         }
       </select>
+      @*<div class="invalid-feedback">
+        Please select search engine.
+      </div>*@
     </div>
 
     <div class="form-group">
-      <label for="searchEngine">Choose Location</label>
-      <select id="selectSearchEngine" class="form-control">
+      <label for="selectLocation">Choose Location</label>
+      <select id="selectLocation" class="form-control required"
+              name="Location">
+        <option selected disabled value="default"></option>
         @foreach (var item in Model.Locations)
         {
           <option value="@item.location_code">@item.location_name</option>
         }
       </select>
+      @*<div class="invalid-feedback">
+        Please select location.
+      </div>*@
     </div>
 
     <div class="form-group">
       <label for="exampleInputEmail1">Website</label>
-      <input type="email" class="form-control" id="website" 
-             aria-describedby="website name" placeholder="Enter a website name">
+      <input type="text" class="form-control required" id="website"
+             aria-describedby="website name" placeholder="Enter a website name"
+             name="Website">
+      @*<div class="invalid-feedback">
+        Please input website.
+      </div>*@
     </div>
 
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Keywords</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea class="form-control required" id="exampleFormControlTextarea1" rows="5"
+                name="Keyword"></textarea>
+      @*<div class="invalid-feedback">
+        Please input key words.
+      </div>*@
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" id="searchRank" class="btn btn-primary">Search</button>
   </form>
 
   <h1 class="display-4">Search Result</h1>

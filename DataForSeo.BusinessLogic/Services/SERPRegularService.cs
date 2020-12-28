@@ -47,7 +47,6 @@ namespace DataForSeo.BusinessLogic.Services
       GC.SuppressFinalize(this);
     }
 
-
     ~SERPRegularService()
     {
       _repository.Dispose();
