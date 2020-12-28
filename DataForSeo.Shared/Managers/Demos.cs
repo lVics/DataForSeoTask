@@ -36,7 +36,7 @@ namespace DataForSeo.Shared.Managers
       {
         model.language_code,
         model.location_code,
-        keyword = Regex.Replace(model.keyword, @"\t|\n|\r", "")
+        keyword = Regex.Replace(model.keyword, @"\t|\n|\r", "").Replace("%","%25")
       });
 
       var taskPostResponse = await httpClient.PostAsync($"/v3/serp/{model.search_engine.ToLower()}/organic/live/regular", new StringContent(JsonConvert.SerializeObject(postData)));
