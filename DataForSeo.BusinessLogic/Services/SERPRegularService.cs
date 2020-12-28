@@ -2,6 +2,7 @@
 using DataForSeo.BusinessLogic.Interfaces;
 using DataForSeo.DataAccess.Entities;
 using DataForSeo.DataAccess.Interfaces;
+using DataForSeo.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace DataForSeo.BusinessLogic.Services
         new SERPRegularEntity()
         {
           Keyword = model.Keyword,
-          SearchEngine = model.SearchEngine,
+          SearchEngine = (SearchEngine)Enum.Parse(typeof(SearchEngine), model.SearchEngine),
           Website = model.Website,
           Rank_group = model.Rank_group
         });
@@ -35,7 +36,7 @@ namespace DataForSeo.BusinessLogic.Services
         model => new SERPRegularDTO() 
         {
           Keyword = model.Keyword,
-          SearchEngine = model.SearchEngine,
+          SearchEngine = Enum.GetName(typeof(SearchEngine), model.SearchEngine),
           Website = model.Website,
           Rank_group = model.Rank_group
         });

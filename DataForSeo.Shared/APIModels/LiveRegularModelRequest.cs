@@ -4,11 +4,12 @@ using System.Text;
 
 namespace DataForSeo.Shared.APIModels
 {
-  public class LiveRegularModel
+  public class LiveRegularModelRequest
   {
-    public int language_code { get; set; }
+    public string language_code { get; set; }
     public int location_code { get; set; }
     public string keyword { get; set; }
-    public int Website { get; set; }
+    public string website { get; set; }
+    public string search_engine { get; set; }
   }
 }

@@ -2,8 +2,8 @@
 {
   public enum SearchEngine : byte
   {
-    None = 0,
     Google = 1,
-    Bing = 2
+    Bing = 2,
+    Yandex = 3
   }
 }

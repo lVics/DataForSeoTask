@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataForSeo.SERPRegular", "DataForSeoSERPRegilar\DataForSeo.SERPRegular.csproj", "{6BEF1C49-C4BA-49F2-8B1D-294718F74225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataForSeo.DataAccess", "DataForSeo.DataAccess\DataForSeo.DataAccess.csproj", "{130CE067-3146-4A88-A37B-CE72DB580B5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataForSeo.DataAccess", "DataForSeo.DataAccess\DataForSeo.DataAccess.csproj", "{130CE067-3146-4A88-A37B-CE72DB580B5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataForSeo.BusinessLogic", "DataForSeo.BusinessLogic\DataForSeo.BusinessLogic.csproj", "{17044E86-8279-4264-BF61-52A256C54349}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataForSeo.BusinessLogic", "DataForSeo.BusinessLogic\DataForSeo.BusinessLogic.csproj", "{17044E86-8279-4264-BF61-52A256C54349}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataForSeo.Shared", "DataForSeo.Shared\DataForSeo.Shared.csproj", "{C3D96F1D-F6D3-4472-854F-1F0E51E1154D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataForSeo.Shared", "DataForSeo.Shared\DataForSeo.Shared.csproj", "{C3D96F1D-F6D3-4472-854F-1F0E51E1154D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

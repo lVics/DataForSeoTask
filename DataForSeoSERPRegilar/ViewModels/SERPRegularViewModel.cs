@@ -8,7 +8,7 @@ namespace DataForSeo.SERPRegular.ViewModels
   {
     public IEnumerable<SERPRegularDTO> SERPRegulars { get; set; }
     public IEnumerable<LocationViewItem> Locations { get; set; }
-    public IEnumerable<SearchEngine> SearchEngines { get; set; }
+    public IEnumerable<string> SearchEngines { get; set; }
   }
 
   public class LocationViewItem

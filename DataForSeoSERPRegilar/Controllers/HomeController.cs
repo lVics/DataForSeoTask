@@ -1,9 +1,11 @@
 ﻿using DataForSeo.BusinessLogic.DTOModels;
 using DataForSeo.BusinessLogic.Interfaces;
 using DataForSeo.SERPRegular.ViewModels;
+using DataForSeo.Shared.APIModels;
 using DataForSeo.Shared.Enums;
 using DataForSeo.Shared.Managers;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,9 +25,8 @@ namespace DataForSeoSERPRegilar.Controllers
     {
       var model = new SERPRegularViewModel();
       model.SERPRegulars = await _SERPRegularService.GetAllAsync();
-      //Enum.GetValues(typeof(Foos)).Cast<Foos>()
-      model.SearchEngines = new List<SearchEngine>() { SearchEngine.Google, SearchEngine.Bing };
-      model.Locations = (await Demos.serp_locations()).Select(location =>
+      model.SearchEngines = Enum.GetNames(typeof(SearchEngine)).Cast<string>().ToList();
+      model.Locations = (await Demos.SERPGetLocations()).Select(location =>
       {
         return new LocationViewItem()
         {
@@ -40,7 +41,15 @@ namespace DataForSeoSERPRegilar.Controllers
     [Route("Search")]
     public async Task<IActionResult> Search(SERPRegularDTO model)
     {
-      //model.Rank_group = await Demos.serp_live_regular(model);
+      model.Rank_group = await Demos.SERPGetSiteRank(new LiveRegularModelRequest() 
+      {
+        keyword = model.Keyword,
+        website = model.Website,
+        language_code = "en",
+        location_code = model.Location,
+        search_engine = model.SearchEngine
+
+      });
       await _SERPRegularService.CreateAsync(model);
       return RedirectToAction("Index");
     }
